@@ -1,8 +1,14 @@
-const { getItems } = require('./todolist');
+const { getItems, addItem } = require('./todolist');
 
 function main() {
-    const items = getItems();
+    let items = getItems();
     console.log(items);
+
+    const newItem = { text: 'Item A'};
+    const added = addItem(newItem);
+    items = getItems();
+    console.log(items);
+
 }
 
 main();

@@ -1,5 +1,15 @@
+const items = [];
+
 function getItems() {
-    return [];
+    return items;
 }
 
-module.exports = { getItems };
+function addItem(item) {
+    items.push(item);
+    return item;
+}
+
+module.exports = {
+    getItems,
+    addItem,
+};

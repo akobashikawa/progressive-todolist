@@ -1,4 +1,4 @@
-const TodoList = require('./todolist');
+const TodoList = require('./core/todolist');
 
 function main() {
     const todoList = new TodoList();

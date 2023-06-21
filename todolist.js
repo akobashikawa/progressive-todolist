@@ -1,21 +1,23 @@
-const items = [];
+class TodoList {
 
-function getItems() {
-    return items;
+    constructor() {
+        this.items = [];
+    }
+
+    getItems() {
+        return this.items;
+    }
+    
+    getItem(id) {
+        const found = this.items.find(item => item.id == id);
+        return found;
+    }
+    
+    addItem(item) {
+        this.items.push(item);
+        return item;
+    }
+
 }
 
-function getItem(id) {
-    const found = items.find(item => item.id == id);
-    return found;
-}
-
-function addItem(item) {
-    items.push(item);
-    return item;
-}
-
-module.exports = {
-    getItems,
-    getItem,
-    addItem,
-};
+module.exports = TodoList;

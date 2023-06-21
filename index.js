@@ -48,6 +48,12 @@ function main() {
     items = todoList.getItems();
     console.log(undone, items);
 
+    // Un item es eliminado
+    console.log('Un item es eliminado');
+    const result = todoList.deleteItem(1);
+    items = todoList.getItems();
+    console.log(result, items);
+
 }
 
 main();

@@ -60,6 +60,17 @@ class TodoList {
         return this.updateItem(id, body);
     }
 
+    // Un item es eliminado
+    deleteItem(id) {
+        const foundIndex = this.items.findIndex(item => item.id == id);
+        this.items.splice(foundIndex, 1);
+        const result = {
+            id,
+            deleted: 1
+        };
+        return result;
+    }
+
 }
 
 module.exports = TodoList;

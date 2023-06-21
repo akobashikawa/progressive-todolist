@@ -81,3 +81,13 @@ describe('Un item es desmarcado como hecho', () => {
     });
 
 });
+
+describe('Un item es eliminado', () => {
+
+    test('Un item es eliminado', () => {
+        const id = 1;
+        const result = todoList.deleteItem(id).deleted == 1;
+        expect(result).toEqual(true);
+    });
+
+});

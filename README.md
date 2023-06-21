@@ -9,4 +9,5 @@
 - Un item es mostrado: (consola)
 - El texto de un item es modificado: (test, consola)
 - Un item es marcado como hecho: (test, consola)
+- Un item es desmarcado como hecho
 - Un item es eliminado

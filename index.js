@@ -13,8 +13,10 @@ function main() {
 
     // Un item es agregado a la lista
     console.log('Un item es agregado a la lista');
-    const newItem = { id: 1, text: 'Item A'};
-    const added = todoList.addItem(newItem);
+    let added = todoList.addItem({ text: 'Item A'});
+    items = todoList.getItems();
+    console.log(added, items);
+    added = todoList.addItem({ text: 'Item B'});
     items = todoList.getItems();
     console.log(added, items);
     
@@ -31,12 +33,20 @@ function main() {
     console.log('El texto de un item es modificado');
     const newText = "Item A v2";
     const updated = todoList.updateItemText(1, newText);
-    console.log(updated);
+    items = todoList.getItems();
+    console.log(updated, items);
 
     // Un item es marcado como hecho
     console.log('Un item es marcado como hecho');
     const done = todoList.updateItemToDone(1);
-    console.log(done);
+    items = todoList.getItems();
+    console.log(done, items);
+
+    // Un item es desmarcado como hecho
+    console.log('Un item es desmarcado como hecho');
+    const undone = todoList.updateItemToTodo(1);
+    items = todoList.getItems();
+    console.log(undone, items);
 
 }
 

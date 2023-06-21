@@ -12,19 +12,31 @@ class TodoList {
         const found = this.items.find(item => item.id == id);
         return found;
     }
+
+    nextId() {
+        const result = this.items.length + 1;
+        return result;
+    }
     
-    addItem(item) {
-        this.items.push(item);
-        return item;
+    addItem(body) {
+        const id = this.nextId();
+        const newItem = {
+            id,
+            ...body,
+            status: 'todo',
+        }
+        this.items.push(newItem);
+        return newItem;
     }
 
     updateItem(id, body) {
-        let found = this.getItem(id);
-        found = {
-            ...found,
+        const foundIndex = this.items.findIndex(item => item.id == id);
+        this.items[foundIndex] = {
+            ...this.items[foundIndex],
             ...body,
         };
-        return found;
+
+        return this.getItem(id);
     }
 
     updateItemText(id, text) {
@@ -34,6 +46,11 @@ class TodoList {
 
     updateItemToDone(id) {
         const body = { status: "done" };
+        return this.updateItem(id, body);
+    }
+
+    updateItemToTodo(id) {
+        const body = { status: "todo" };
         return this.updateItem(id, body);
     }
 

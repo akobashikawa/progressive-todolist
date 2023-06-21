@@ -19,13 +19,14 @@ describe('Un item es agregado a la lista vacia', () => {
     });
 
     test('Un item es agregado a la lista', () => {
-        const newItem = {
-            id: 1,
+        const body = {
             text: 'Item A'
         };
-        const added = todoList.addItem(newItem);
+        const added = todoList.addItem(body);
         const items = todoList.getItems();
-        const result = (added.text == items[0].text);
+        const result = added.id 
+            && (added.text == items[0].text) 
+            && (added.status == 'todo');
         expect(result).toEqual(true);
     });
 
@@ -51,8 +52,12 @@ describe('El texto de un item es modificado', () => {
     test('El texto de un item es modificado', () => {
         const id = 1;
         const text = "Item A v2";
-        const result = todoList.updateItemText(id, text).text;
-        expect(result).toEqual(text);
+        const updated = todoList.updateItemText(id, text);
+        console.log(updated);
+        const getted = todoList.getItem(id);
+        console.log(getted);
+        const result = (updated.text == getted.text);
+        expect(result).toEqual(true);
     });
 
 });
@@ -63,6 +68,16 @@ describe('Un item es marcado como hecho', () => {
         const id = 1;
         const result = todoList.updateItemToDone(id).status;
         expect(result).toEqual('done');
+    });
+
+});
+
+describe('Un item es desmarcado como hecho', () => {
+
+    test('Un item es desmarcado como hecho', () => {
+        const id = 1;
+        const result = todoList.updateItemToTodo(id).status;
+        expect(result).toEqual('todo');
     });
 
 });

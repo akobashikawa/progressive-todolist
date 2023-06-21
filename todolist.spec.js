@@ -1,4 +1,4 @@
-const { getItems, addItem } = require('./todolist');
+const { getItems, getItem, addItem } = require('./todolist');
 
 describe('Al inicio, la lista está vacia', () => {
 
@@ -18,6 +18,7 @@ describe('Un item es agregado a la lista vacia', () => {
 
     test('Un item es agregado a la lista', () => {
         const newItem = {
+            id: 1,
             text: 'Item A'
         };
         const added = addItem(newItem);
@@ -29,6 +30,16 @@ describe('Un item es agregado a la lista vacia', () => {
     test('La lista es obtenida', () => {
         const result = getItems().length;
         expect(result).toBe(1);
+    });
+
+});
+
+describe('Un item es obtenido', () => {
+
+    test('Un item es obtenido', () => {
+        const id = 1;
+        const result = getItem(id).id;
+        expect(result).toEqual(id);
     });
 
 });

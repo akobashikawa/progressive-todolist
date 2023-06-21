@@ -56,3 +56,13 @@ describe('El texto de un item es modificado', () => {
     });
 
 });
+
+describe('Un item es marcado como hecho', () => {
+
+    test('Un item es marcado como hecho', () => {
+        const id = 1;
+        const result = todoList.updateItemToDone(id).status;
+        expect(result).toEqual('done');
+    });
+
+});

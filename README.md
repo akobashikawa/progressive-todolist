@@ -8,5 +8,5 @@
 - Un item es obtenido: (spec, consola)
 - Un item es mostrado: (consola)
 - El texto de un item es modificado: (test, consola)
-- Un item es marcado como hecho
+- Un item es marcado como hecho: (consola)
 - Un item es eliminado

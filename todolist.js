@@ -19,13 +19,21 @@ class TodoList {
     }
 
     updateItem(id, body) {
-        const found = this.getItem(id);
-        found.text = body.text;
+        let found = this.getItem(id);
+        found = {
+            ...found,
+            ...body,
+        };
         return found;
     }
 
     updateItemText(id, text) {
         const body = { text };
+        return this.updateItem(id, body);
+    }
+
+    updateItemToDone(id) {
+        const body = { status: "done" };
         return this.updateItem(id, body);
     }
 

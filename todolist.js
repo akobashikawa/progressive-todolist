@@ -18,6 +18,12 @@ class TodoList {
         return item;
     }
 
+    updateItem(id, body) {
+        const found = this.getItem(id);
+        found.text = body.text;
+        return found;
+    }
+
 }
 
 module.exports = TodoList;

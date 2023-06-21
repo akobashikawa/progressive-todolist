@@ -2,11 +2,11 @@
 
 ## Eventos
 
-- La lista es obtenida
-- La lista es mostrada
-- Un item es agregado a la lista
-- Un item es obtenido
-- Un item es mostrado
-- El texto de un item es modificado
+- La lista es obtenida: (spec, consola)
+- La lista es mostrada: (consola)
+- Un item es agregado a la lista: (spec, consola)
+- Un item es obtenido: (spec, consola)
+- Un item es mostrado: (consola)
+- El texto de un item es modificado: (test)
 - Un item es marcado como hecho
 - Un item es eliminado

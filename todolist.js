@@ -24,6 +24,11 @@ class TodoList {
         return found;
     }
 
+    updateItemText(id, text) {
+        const body = { text };
+        return this.updateItem(id, body);
+    }
+
 }
 
 module.exports = TodoList;

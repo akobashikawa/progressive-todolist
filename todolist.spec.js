@@ -51,10 +51,7 @@ describe('El texto de un item es modificado', () => {
     test('El texto de un item es modificado', () => {
         const id = 1;
         const text = "Item A v2";
-        const body = {
-            text
-        };
-        const result = todoList.updateItem(id, body).text;
+        const result = todoList.updateItemText(id, text).text;
         expect(result).toEqual(text);
     });
 

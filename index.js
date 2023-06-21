@@ -17,7 +17,7 @@ function main() {
 
     // El texto de un item es modificado
     const newText = "Item A v2";
-    const updated = todoList.updateItem(1, { text: newText });
+    const updated = todoList.updateItemText(1, newText);
     console.log(updated);
 
 }

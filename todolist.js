@@ -4,10 +4,12 @@ class TodoList {
         this.items = [];
     }
 
+    // La lista es obtenida
     getItems() {
         return this.items;
     }
     
+    // Un item es obtenido
     getItem(id) {
         const found = this.items.find(item => item.id == id);
         return found;
@@ -18,6 +20,7 @@ class TodoList {
         return result;
     }
     
+    // Un item es agregado a la lista
     addItem(body) {
         const id = this.nextId();
         const newItem = {
@@ -39,16 +42,19 @@ class TodoList {
         return this.getItem(id);
     }
 
+    // El texto de un item es modificado
     updateItemText(id, text) {
         const body = { text };
         return this.updateItem(id, body);
     }
 
+    // Un item es marcado como hecho
     updateItemToDone(id) {
         const body = { status: "done" };
         return this.updateItem(id, body);
     }
 
+    // Un item es desmarcado como hecho
     updateItemToTodo(id) {
         const body = { status: "todo" };
         return this.updateItem(id, body);

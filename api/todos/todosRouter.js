@@ -40,6 +40,30 @@ router.patch('/:id', (req, res, next) => {
     res.json(updated);
 });
 
+router.patch('/:id/done', (req, res, next) => {
+    const id = parseInt(req.params.id, 10);
+    const updated = todoList.updateItemToDone(id);
+    if (!updated) {
+        return res.status(500).json({
+            id,
+            message: 'item no actualizado'
+        });
+    }
+    res.json(updated);
+});
+
+router.patch('/:id/todo', (req, res, next) => {
+    const id = parseInt(req.params.id, 10);
+    const updated = todoList.updateItemToTodo(id);
+    if (!updated) {
+        return res.status(500).json({
+            id,
+            message: 'item no actualizado'
+        });
+    }
+    res.json(updated);
+});
+
 router.delete('/:id', (req, res, next) => {
     const id = parseInt(req.params.id, 10);
     const result = todoList.deleteItem(id);

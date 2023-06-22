@@ -6,9 +6,7 @@ const todosRouter = require('./api/todos/todosRouter');
 
 app.use(express.json());
 
-app.get('/', (req, res, next) => {
-    res.send('ToDo List');
-})
+app.use(express.static('public'))
 
 app.use('/api', indexRouter);
 app.use('/api/todos', todosRouter);

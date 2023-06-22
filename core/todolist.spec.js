@@ -90,4 +90,10 @@ describe('Un item es eliminado', () => {
         expect(result).toEqual(true);
     });
 
+    test('Un item eliminado no es eliminado', () => {
+        const id = 1;
+        const result = todoList.deleteItem(id).deleted == 0;
+        expect(result).toEqual(true);
+    });
+
 });

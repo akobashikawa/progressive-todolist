@@ -38,8 +38,8 @@ class TodoList {
             ...this.items[foundIndex],
             ...body,
         };
-
-        return this.getItem(id);
+        const updated = this.getItem(id);
+        return updated;
     }
 
     // El texto de un item es modificado
@@ -63,10 +63,14 @@ class TodoList {
     // Un item es eliminado
     deleteItem(id) {
         const foundIndex = this.items.findIndex(item => item.id == id);
-        this.items.splice(foundIndex, 1);
+        let deleted = 0;
+        if (foundIndex > -1) {
+            const item = this.items.splice(foundIndex, 1);
+            deleted = item ? 1 : 0;
+        }
         const result = {
             id,
-            deleted: 1
+            deleted
         };
         return result;
     }

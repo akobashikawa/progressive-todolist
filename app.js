@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 
-const indexRouter = require('./api/indexRouter')
-const todosRouter = require('./api/todos/todosRouter')
+const indexRouter = require('./api/indexRouter');
+const todosRouter = require('./api/todos/todosRouter');
+
+app.use(express.json());
 
 app.get('/', (req, res, next) => {
     res.send('ToDo List');

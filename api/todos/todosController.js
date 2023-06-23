@@ -1,5 +1,11 @@
+const TodosRepositoryArray = require('./todosRepositoryArray');
+const todosRepository = new TodosRepositoryArray();
+
+const TodoList = require('../../domain/todolist');
+const todosEntity = new TodoList({ todosRepository });
+
 const TodosService = require('./todosService');
-const todosService = new TodosService();
+const todosService = new TodosService({ todosEntity });
 
 class TodosController {
 

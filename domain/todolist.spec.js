@@ -1,6 +1,8 @@
-const TodoList = require('./todolist');
+const TodosRepositoryArray = require('../api/todos/todosRepositoryArray');
+const todosRepository = new TodosRepositoryArray();
 
-const todoList = new TodoList();
+const TodoList = require('./todolist');
+const todoList = new TodoList({ todosRepository });
 
 describe('Al inicio, la lista está vacia', () => {
 
@@ -23,6 +25,7 @@ describe('Un item es agregado a la lista vacia', () => {
             text: 'Item A'
         };
         const added = todoList.addItem(body);
+        console.log(added);
         const items = todoList.getItems();
         const result = added.id 
             && (added.text == items[0].text) 

@@ -1,7 +1,10 @@
-const TodoList = require('./core/todolist');
+const TodosRepositoryArray = require('./api/todos/todosRepositoryArray');
+const todosRepository = new TodosRepositoryArray();
+
+const TodoList = require('./domain/todolist');
+const todoList = new TodoList({ todosRepository });
 
 function main() {
-    const todoList = new TodoList();
 
     // La lista es obtenida
     console.log('La lista es obtenida');

@@ -1,41 +1,35 @@
-const TodosRepositoryArray = require('./todosRepositoryArray');
-const todosRepository = new TodosRepositoryArray();
-
-const TodoList = require('../../core/todolist');
-const todoList = new TodoList({ todosRepository });
-
 class TodosService {
 
-    constructor() {
-
+    constructor({ todosEntity }) {
+        this.todosEntity = todosEntity;
     }
 
     getItem() {
-        return todoList.getItem(id);
+        return this.todosEntity.getItem(id);
     }
 
     getItems() {
-        return todoList.getItems();
+        return this.todosEntity.getItems();
     }
 
     addItem(body) {
-        return todoList.addItem(body);
+        return this.todosEntity.addItem(body);
     }
 
     updateItem(id, body) {
-        return todoList.updateItem(id, body);
+        return this.todosEntity.updateItem(id, body);
     }
 
     updateItemToDone(id) {
-        return todoList.updateItemToDone(id);
+        return this.todosEntity.updateItemToDone(id);
     }
 
     updateItemToTodo(id) {
-        return todoList.updateItemToTodo(id);
+        return this.todosEntity.updateItemToTodo(id);
     }
 
     deleteItem(id) {
-        return todoList.deleteItem(id);
+        return this.todosEntity.deleteItem(id);
     }
 }
 

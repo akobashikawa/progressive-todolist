@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 
-const TodosRepositoryArray = require('./todosRepositoryArray');
-const todosRepository = new TodosRepositoryArray();
+// const TodosRepository = require('./todosRepositoryArray');
+const TodosRepository = require('./todosRepositoryHash');
+const todosRepository = new TodosRepository();
 
 const TodoList = require('../../domain/todolist');
 const todosEntity = new TodoList({ todosRepository });

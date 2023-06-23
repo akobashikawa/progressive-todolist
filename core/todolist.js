@@ -1,44 +1,34 @@
+const TodosRepositoryArray = require('../api/todos/todosRepositoryArray');
+const todosRepositoryArray = new TodosRepositoryArray();
 class TodoList {
 
     constructor() {
-        this.items = [];
+        
     }
 
     // La lista es obtenida
     getItems() {
-        return this.items;
+        return todosRepositoryArray.findAll();
     }
     
     // Un item es obtenido
     getItem(id) {
-        const found = this.items.find(item => item.id == id);
+        const found = todosRepositoryArray.findById(id);
         return found;
     }
 
-    nextId() {
-        const result = this.items.length + 1;
-        return result;
-    }
-    
     // Un item es agregado a la lista
     addItem(body) {
-        const id = this.nextId();
         const newItem = {
-            id,
             ...body,
             status: 'todo',
         }
-        this.items.push(newItem);
-        return newItem;
+        const added = todosRepositoryArray.create(newItem);
+        return added;
     }
 
     updateItem(id, body) {
-        const foundIndex = this.items.findIndex(item => item.id == id);
-        this.items[foundIndex] = {
-            ...this.items[foundIndex],
-            ...body,
-        };
-        const updated = this.getItem(id);
+        const updated = todosRepositoryArray.update(id, body);
         return updated;
     }
 
@@ -62,16 +52,7 @@ class TodoList {
 
     // Un item es eliminado
     deleteItem(id) {
-        const foundIndex = this.items.findIndex(item => item.id == id);
-        let deleted = 0;
-        if (foundIndex > -1) {
-            const item = this.items.splice(foundIndex, 1);
-            deleted = item ? 1 : 0;
-        }
-        const result = {
-            id,
-            deleted
-        };
+        const result = todosRepositoryArray.delete(id);
         return result;
     }
 

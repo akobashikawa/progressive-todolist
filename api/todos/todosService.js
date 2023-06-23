@@ -1,5 +1,8 @@
+const TodosRepositoryArray = require('./todosRepositoryArray');
+const todosRepository = new TodosRepositoryArray();
+
 const TodoList = require('../../core/todolist');
-const todoList = new TodoList();
+const todoList = new TodoList({ todosRepository });
 
 class TodosService {
 

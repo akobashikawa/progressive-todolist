@@ -1,19 +1,17 @@
-const TodosRepositoryArray = require('../api/todos/todosRepositoryArray');
-const todosRepositoryArray = new TodosRepositoryArray();
 class TodoList {
 
-    constructor() {
-        
+    constructor({ todosRepository }) {
+        this.todosRepository = todosRepository;
     }
 
     // La lista es obtenida
     getItems() {
-        return todosRepositoryArray.findAll();
+        return this.todosRepository.findAll();
     }
     
     // Un item es obtenido
     getItem(id) {
-        const found = todosRepositoryArray.findById(id);
+        const found = this.todosRepository.findById(id);
         return found;
     }
 
@@ -23,12 +21,12 @@ class TodoList {
             ...body,
             status: 'todo',
         }
-        const added = todosRepositoryArray.create(newItem);
+        const added = this.todosRepository.create(newItem);
         return added;
     }
 
     updateItem(id, body) {
-        const updated = todosRepositoryArray.update(id, body);
+        const updated = this.todosRepository.update(id, body);
         return updated;
     }
 
@@ -52,7 +50,7 @@ class TodoList {
 
     // Un item es eliminado
     deleteItem(id) {
-        const result = todosRepositoryArray.delete(id);
+        const result = this.todosRepository.delete(id);
         return result;
     }
 

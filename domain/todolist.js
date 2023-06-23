@@ -5,53 +5,51 @@ class TodoList {
     }
 
     // La lista es obtenida
-    getItems() {
+    async getItems() {
         return this.todosRepository.findAll();
     }
     
     // Un item es obtenido
-    getItem(id) {
-        const found = this.todosRepository.findById(id);
-        return found;
+    async getItem(id) {
+        return this.todosRepository.findById(id);
     }
 
     // Un item es agregado a la lista
-    addItem(body) {
+    async addItem(body) {
         const newItem = {
             ...body,
             status: 'todo',
         }
-        const added = this.todosRepository.create(newItem);
+        const added = await this.todosRepository.create(newItem);
         return added;
     }
 
-    updateItem(id, body) {
-        const updated = this.todosRepository.update(id, body);
+    async updateItem(id, body) {
+        return this.todosRepository.update(id, body);
         return updated;
     }
 
     // El texto de un item es modificado
-    updateItemText(id, text) {
+    async updateItemText(id, text) {
         const body = { text };
         return this.updateItem(id, body);
     }
 
     // Un item es marcado como hecho
-    updateItemToDone(id) {
+    async updateItemToDone(id) {
         const body = { status: "done" };
         return this.updateItem(id, body);
     }
 
     // Un item es desmarcado como hecho
-    updateItemToTodo(id) {
+    async updateItemToTodo(id) {
         const body = { status: "todo" };
         return this.updateItem(id, body);
     }
 
     // Un item es eliminado
-    deleteItem(id) {
-        const result = this.todosRepository.delete(id);
-        return result;
+    async deleteItem(id) {
+        return this.todosRepository.delete(id);
     }
 
 }

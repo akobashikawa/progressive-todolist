@@ -5,7 +5,7 @@ class TodosRepositoryArray {
     }
 
     findAll() {
-        return this.items;
+        return this.items.slice();// slice para copiar
     }
 
     findById(id) {
@@ -30,19 +30,20 @@ class TodosRepositoryArray {
             ...newItem
         }
         this.items.push(newItemWithId);
+        return newItemWithId;
     }
 
     update(id, body) {
-        const foundIndex = this.items.findIndex(item => item.id == id);
+        const foundIndex = this.items.findIndex(item => id == item.id);
         this.items[foundIndex] = {
             ...this.items[foundIndex],
             ...body,
         };
-        return this.items[foundIndex];
+        return {...this.items[foundIndex]};// para copiar
     }
 
     delete(id) {
-        const foundIndex = this.items.findIndex(item => item.id == id);
+        const foundIndex = this.items.findIndex(item => id == item.id);
         let deleted = 0;
         if (foundIndex > -1) {
             const item = this.items.splice(foundIndex, 1);

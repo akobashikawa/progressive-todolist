@@ -1,5 +1,5 @@
-const TodoList = require('../../core/todolist');
-const todoList = new TodoList();
+const TodosService = require('./todosService');
+const todosService = new TodosService();
 
 class TodosController {
 
@@ -9,7 +9,7 @@ class TodosController {
 
     getItem = (req, res, next) => {
         const id = req.params.id;
-        const found = todoList.getItem(id);
+        const found = todosService.getItem(id);
         if (!found) {
             return res.status(404).json({
                 id,
@@ -20,20 +20,20 @@ class TodosController {
     };
 
     getItems = (req, res, next) => {
-        const items = todoList.getItems();
+        const items = todosService.getItems();
         res.json(items);
     };
 
     addItem = (req, res, next) => {
         const body = req.body;
-        const added = todoList.addItem(body);
+        const added = todosService.addItem(body);
         res.json(added);
     };
 
     updateItem = (req, res, next) => {
         const id = parseInt(req.params.id, 10);
         const body = req.body;
-        const updated = todoList.updateItem(id, body);
+        const updated = todosService.updateItem(id, body);
         if (!updated) {
             return res.status(500).json({
                 id,
@@ -45,7 +45,7 @@ class TodosController {
 
     doneItem = (req, res, next) => {
         const id = parseInt(req.params.id, 10);
-        const updated = todoList.updateItemToDone(id);
+        const updated = todosService.updateItemToDone(id);
         if (!updated) {
             return res.status(500).json({
                 id,
@@ -57,7 +57,7 @@ class TodosController {
     
     todoItem = (req, res, next) => {
         const id = parseInt(req.params.id, 10);
-        const updated = todoList.updateItemToTodo(id);
+        const updated = todosService.updateItemToTodo(id);
         if (!updated) {
             return res.status(500).json({
                 id,
@@ -69,10 +69,9 @@ class TodosController {
 
     deleteItem = (req, res, next) => {
         const id = parseInt(req.params.id, 10);
-        const result = todoList.deleteItem(id);
+        const result = todosService.deleteItem(id);
         res.json(result);
     };
-
 
 }
 

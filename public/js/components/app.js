@@ -24,7 +24,7 @@ const AppComponent = {
         </ul>
 
         <div class="input-group mt-2">
-            <input type="text" class="form-control" v-model="text" />
+            <input type="text" class="form-control" v-model="text" ref="textInput"/>
             <button class="btn btn-sm btn-primary" @click="addItem">Agregar</button>
         </div>
     </div>
@@ -72,7 +72,8 @@ const AppComponent = {
             try {
                 const response = await axios.post('/api/todos', body);
                 const data = response.data;
-                return this.getItems(); 
+                this.$refs.textInput.select();
+                return this.getItems();
             } catch (error) {
                 console.log(error);
             }

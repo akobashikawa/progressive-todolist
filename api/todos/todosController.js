@@ -13,9 +13,9 @@ class TodosController {
 
     }
 
-    getItem = (req, res, next) => {
+    getItem = async (req, res, next) => {
         const id = req.params.id;
-        const found = todosService.getItem(id);
+        const found = await todosService.getItem(id);
         if (!found) {
             return res.status(404).json({
                 id,
@@ -25,21 +25,21 @@ class TodosController {
         res.json(found);
     };
 
-    getItems = (req, res, next) => {
-        const items = todosService.getItems();
+    getItems = async (req, res, next) => {
+        const items = await todosService.getItems();
         res.json(items);
     };
 
-    addItem = (req, res, next) => {
+    addItem = async (req, res, next) => {
         const body = req.body;
-        const added = todosService.addItem(body);
+        const added = await todosService.addItem(body);
         res.json(added);
     };
 
-    updateItem = (req, res, next) => {
+    updateItem = async (req, res, next) => {
         const id = parseInt(req.params.id, 10);
         const body = req.body;
-        const updated = todosService.updateItem(id, body);
+        const updated = await todosService.updateItem(id, body);
         if (!updated) {
             return res.status(500).json({
                 id,
@@ -49,9 +49,9 @@ class TodosController {
         res.json(updated);
     };
 
-    doneItem = (req, res, next) => {
+    doneItem = async (req, res, next) => {
         const id = parseInt(req.params.id, 10);
-        const updated = todosService.updateItemToDone(id);
+        const updated = await todosService.updateItemToDone(id);
         if (!updated) {
             return res.status(500).json({
                 id,
@@ -61,9 +61,9 @@ class TodosController {
         res.json(updated);
     };
     
-    todoItem = (req, res, next) => {
+    todoItem = async (req, res, next) => {
         const id = parseInt(req.params.id, 10);
-        const updated = todosService.updateItemToTodo(id);
+        const updated = await todosService.updateItemToTodo(id);
         if (!updated) {
             return res.status(500).json({
                 id,
@@ -73,9 +73,9 @@ class TodosController {
         res.json(updated);
     };
 
-    deleteItem = (req, res, next) => {
+    deleteItem = async (req, res, next) => {
         const id = parseInt(req.params.id, 10);
-        const result = todosService.deleteItem(id);
+        const result = await todosService.deleteItem(id);
         res.json(result);
     };
 

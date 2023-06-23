@@ -4,31 +4,31 @@ class TodosService {
         this.todosEntity = todosEntity;
     }
 
-    getItem() {
+    async getItem(id) {
         return this.todosEntity.getItem(id);
     }
 
-    getItems() {
+    async getItems() {
         return this.todosEntity.getItems();
     }
 
-    addItem(body) {
+    async addItem(body) {
         return this.todosEntity.addItem(body);
     }
 
-    updateItem(id, body) {
+    async updateItem(id, body) {
         return this.todosEntity.updateItem(id, body);
     }
 
-    updateItemToDone(id) {
+    async updateItemToDone(id) {
         return this.todosEntity.updateItemToDone(id);
     }
 
-    updateItemToTodo(id) {
+    async updateItemToTodo(id) {
         return this.todosEntity.updateItemToTodo(id);
     }
 
-    deleteItem(id) {
+    async deleteItem(id) {
         return this.todosEntity.deleteItem(id);
     }
 }

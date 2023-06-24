@@ -11,3 +11,23 @@
 - Un item es marcado como hecho: (test, consola, vue)
 - Un item es marcado como pendiente: (test, consola, vue)
 - Un item es eliminado: (test, consola, vue)
+
+
+## TODO
+
+- Test entity: DONE
+- Test repository
+- Test service
+- Test controller
+- Test console
+- API doc
+- Frontend Console
+- Frontend Vue: DONE
+- Repository Array: DONE
+- Repository Hash: DONE
+- Repository Sqlite Memory
+- Repository Sqlite Disk
+- Realtime
+- Redis cache
+- Queue
+
